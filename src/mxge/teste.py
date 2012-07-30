@@ -15,24 +15,24 @@ velocity = 200.
 
 running = True
 while running:
-    pps = clock.tick(30) / 1000.
-    x, y = 0, 0
+    pps = clock.tick(60) / 1000.
 
     for e in pygame.event.get():
         if e.type == QUIT:
             running = False
+        if e.type == KEYDOWN:
+            if e.key == K_ESCAPE:
+                running = False
 
     keys = pygame.key.get_pressed()
     if keys[K_LEFT]:
-        x -= pps * velocity
+        squ.move(-(pps * velocity), 0)
     elif keys[K_RIGHT]:
-        x += pps * velocity
+        squ.move(pps * velocity, 0)
     if keys[K_UP]:
-        y -= pps * velocity
+        squ.move(0, -(pps * velocity))
     elif keys[K_DOWN]:
-        y += pps * velocity
-
-    squ.move(x, y)
+        squ.move(0, pps * velocity)
 
     if (squ.collide(tri)):
         squ.color = tri.color = (255, 0, 0)
@@ -46,3 +46,4 @@ while running:
     pygame.display.flip()
 
 pygame.quit()
+
