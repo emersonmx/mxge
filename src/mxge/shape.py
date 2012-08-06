@@ -48,3 +48,8 @@ class Square(Shape):
         Shape.__init__(self)
         self.polygon = Polygon(((0, 0), (25, 0), (25, 25), (0, 25)))
 
+if __name__ == "__main__":
+    l1 = Line((0, 0), (10, 10))
+    l2 = l1
+
+    print intersect_lines(l1.begin, l1.end, l2.begin, l2.end)

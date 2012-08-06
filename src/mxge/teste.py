@@ -25,6 +25,10 @@ while running:
                 running = False
 
     keys = pygame.key.get_pressed()
+    if keys[K_LSHIFT]:
+        velocity = 10.
+    else:
+        velocity = 200.
     if keys[K_LEFT]:
         squ.move(-(pps * velocity), 0)
     elif keys[K_RIGHT]:
